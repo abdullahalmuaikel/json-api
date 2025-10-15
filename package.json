@@ -1,8 +1,7 @@
 {
-  "name": "my-json-api",
+  "name": "json-api",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "node server.js"
   },
