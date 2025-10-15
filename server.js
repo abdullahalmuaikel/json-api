@@ -1,7 +1,8 @@
-import jsonServer from "json-server";
+// server.js  (CommonJS)
+const jsonServer = require("json-server");
 
 const app = jsonServer.create();
-const router = jsonServer.router("db.json");
+const router = jsonServer.router("db.json"); // must exist at repo root
 const middlewares = jsonServer.defaults();
 
 app.use(middlewares);
@@ -10,8 +11,8 @@ app.use(jsonServer.bodyParser);
 // health check
 app.get("/health", (req, res) => res.json({ ok: true }));
 
-// mount routes (blogs, users, etc.)
+// mount all routes from db.json (e.g., /blogs)
 app.use(router);
 
-// IMPORTANT for Vercel: export the Express app (no app.listen)
-export default app;
+// export the app for Vercel serverless
+module.exports = app;
